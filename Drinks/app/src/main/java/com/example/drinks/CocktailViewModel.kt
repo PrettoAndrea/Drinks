@@ -6,7 +6,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
-class CocktailViewModel(private val repository: CocktailRepositori) : ViewModel() {
+class CocktailViewModel(private val repository: CocktailRepository) : ViewModel() {
 
     private val _cocktails = MutableStateFlow<List<Cocktail>?>(null)
     val cocktails: StateFlow<List<Cocktail>?> = _cocktails

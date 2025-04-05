@@ -17,7 +17,7 @@ private val LightColorScheme = lightColorScheme(
 fun CocktailAppTheme(content: @Composable () -> Unit) {
     MaterialTheme(
         colorScheme = LightColorScheme,
-        typography = Typography, // Utilizza la tipografia predefinita di Material3
+        typography = Typography,
         content = content
     )
 }
