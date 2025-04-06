@@ -34,14 +34,12 @@ fun CocktailItem(cocktail: Cocktail){
             .clickable { expanded = !expanded }
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
-            // Nome del cocktail
             Text(
                 text = cocktail.strDrink ?: "Unknown Cocktail",
                 style = MaterialTheme.typography.titleMedium
             )
             Spacer(modifier = Modifier.height(8.dp))
 
-            // Immagine del cocktail
             cocktail.strDrinkThumb?.let { thumbUrl ->
                 Image(
                     painter = rememberImagePainter(thumbUrl),

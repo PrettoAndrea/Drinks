@@ -21,7 +21,6 @@ fun MainScreen(viewModel: CocktailViewModel) {
             .fillMaxSize()
             .padding(16.dp)
     ) {
-        // Campo di ricerca
         TextField(
             value = searchQuery,
             onValueChange = { searchQuery = it },
@@ -31,7 +30,6 @@ fun MainScreen(viewModel: CocktailViewModel) {
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // Pulsante per la ricerca
         Button(
             onClick = { viewModel.searchCocktails(searchQuery) },
             modifier = Modifier.fillMaxWidth()
@@ -43,21 +41,17 @@ fun MainScreen(viewModel: CocktailViewModel) {
 
         when {
             isLoading -> {
-                // Mostra il loader mentre si caricano i dati
                 CircularProgressIndicator(modifier = Modifier.align(Alignment.CenterHorizontally))
             }
             cocktails.isNullOrEmpty() -> {
-                // Mostra un messaggio se non ci sono cocktail o se la lista è vuota
                 Text(
                     "No cocktails found.",
                     modifier = Modifier.align(Alignment.CenterHorizontally)
                 )
             }
             else -> {
-                // Mostra la lista di cocktail se ci sono dati
                 LazyColumn {
-                    // Assicurati che 'cocktails' non sia null
-                    val nonNullCocktails = cocktails ?: emptyList() // Usa una lista vuota se cocktails è null
+                    val nonNullCocktails = cocktails ?: emptyList()
                     items(nonNullCocktails) { cocktail ->
                         CocktailItem(cocktail)
                     }
