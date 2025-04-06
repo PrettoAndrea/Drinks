@@ -1,7 +1,8 @@
 package com.example.drinks
 
-import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -20,6 +21,7 @@ fun MainScreen(viewModel: CocktailViewModel) {
             .fillMaxSize()
             .padding(16.dp)
     ) {
+        // Campo di ricerca
         TextField(
             value = searchQuery,
             onValueChange = { searchQuery = it },
@@ -29,6 +31,7 @@ fun MainScreen(viewModel: CocktailViewModel) {
 
         Spacer(modifier = Modifier.height(16.dp))
 
+        // Pulsante per la ricerca
         Button(
             onClick = { viewModel.searchCocktails(searchQuery) },
             modifier = Modifier.fillMaxWidth()
@@ -40,27 +43,25 @@ fun MainScreen(viewModel: CocktailViewModel) {
 
         when {
             isLoading -> {
+                // Mostra il loader mentre si caricano i dati
                 CircularProgressIndicator(modifier = Modifier.align(Alignment.CenterHorizontally))
             }
-            cocktails != null -> {
-                if (cocktails!!.isEmpty()) {
-                    Text(
-                        "No cocktails found.",
-                        modifier = Modifier.align(Alignment.CenterHorizontally)
-                    )
-                } else {
-                    LazyColumn {
-                        items(cocktails!!) { cocktail ->
-                            CocktailItem(cocktail)
-                        }
-                    }
-                }
-            }
-            else -> {
+            cocktails.isNullOrEmpty() -> {
+                // Mostra un messaggio se non ci sono cocktail o se la lista è vuota
                 Text(
-                    "Please search for a cocktail.",
+                    "No cocktails found.",
                     modifier = Modifier.align(Alignment.CenterHorizontally)
                 )
+            }
+            else -> {
+                // Mostra la lista di cocktail se ci sono dati
+                LazyColumn {
+                    // Assicurati che 'cocktails' non sia null
+                    val nonNullCocktails = cocktails ?: emptyList() // Usa una lista vuota se cocktails è null
+                    items(nonNullCocktails) { cocktail ->
+                        CocktailItem(cocktail)
+                    }
+                }
             }
         }
     }

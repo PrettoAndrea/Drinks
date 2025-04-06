@@ -1,9 +1,11 @@
 package com.example.cocktailapp.ui.theme
 
-import androidx.compose.material3.*
+import androidx.compose.material3.Typography
+import androidx.compose.material3.* // Importa tutto correttamente da material3
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 
+// Definisci il tuo schema di colori
 private val LightColorScheme = lightColorScheme(
     primary = Color(0xFF6200EE),
     onPrimary = Color.White,
@@ -13,11 +15,16 @@ private val LightColorScheme = lightColorScheme(
     onSurface = Color.Black
 )
 
+
+private val CustomTypography = Typography(
+
+)
+
 @Composable
 fun CocktailAppTheme(content: @Composable () -> Unit) {
     MaterialTheme(
         colorScheme = LightColorScheme,
-        typography = Typography,
+        typography = CustomTypography, // Passa il CustomTypography qui
         content = content
     )
 }

@@ -1,5 +1,8 @@
 package com.example.drinks
 
+import Cocktail
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -19,7 +22,8 @@ import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
 
 @Composable
-fun CocktailItem(cocktail: Int) {
+fun CocktailItem(cocktail: Cocktail){
+
 
     var expanded by remember { mutableStateOf(false) }
 

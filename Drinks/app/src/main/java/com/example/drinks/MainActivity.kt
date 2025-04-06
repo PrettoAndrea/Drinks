@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.cocktailapp.ui.theme.CocktailAppTheme
 
 
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
